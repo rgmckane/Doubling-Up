@@ -4,7 +4,7 @@ library(tidyverse)
 library(robsurvey)
 
 
-data1 <- read.csv("~/Downloads/usa_00102.csv",  blank.lines.skip = TRUE)
+data1 <- read.csv("~/Downloads/usa_00102.csv",  blank.lines.skip = TRUE) #please contact Molly Richard for the dataset and information on variable choice
 names(data1) #names of variables
 length(data1$YEAR) #number of observations
 
