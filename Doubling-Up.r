@@ -3,8 +3,11 @@ library(dplyr)
 library(tidyverse)
 library(robsurvey)
 
+#please contact Molly Richard (Vanderbilt Univeristy) for the dataset and information on variable choice
+#or for the same code in SAS
 
-data1 <- read.csv("~/Downloads/usa_00102.csv",  blank.lines.skip = TRUE) #please contact Molly Richard for the dataset and information on variable choice
+
+data1 <- read.csv("~/Downloads/usa_00102.csv",  blank.lines.skip = TRUE) 
 names(data1) #names of variables
 length(data1$YEAR) #number of observations
 
@@ -30,13 +33,13 @@ ifelse(OWNERSHP == 1 & MORTGAGE == 2 | MORTGAGE == 3  | MORTGAGE == 4, .504*(AMG
                          roundedadjustedpoverty = round(adjustedpoverty, 0),
                          roundedadjustedpoverty_head = round(adjustedpoverty_head,0),
   
-                         overcrowded = ifelse((NUMPREC/2)>(BEDROOMS-1), 1, 0),
+                        overcrowded = ifelse((NUMPREC/2)>(BEDROOMS-1), 1, 0),
   
                         DUrelative = ifelse(RELATE  %in% c(5,6,7,8,10)  & AGE < 65, 1,0),
   
-                         special1 = ifelse(RELATE == 7 & AGE < 18 & MOMLOC== 0 & POPLOC == 0, 1, 0),
+                       special1 = ifelse(RELATE == 7 & AGE < 18 & MOMLOC== 0 & POPLOC == 0, 1, 0),
   
-         special2 = ifelse(RELATE == 7 & AGE > 17 & MOMLOC== 0 & POPLOC == 0 & MOMLOC_HEAD == 0  & 
+                       special2 = ifelse(RELATE == 7 & AGE > 17 & MOMLOC== 0 & POPLOC == 0 & MOMLOC_HEAD == 0  & 
                                      POPLOC_HEAD == 0 & SPLOC == 0 & SPLOC_HEAD == 0 &
                                           NCHILD == 0 & NCHILD_HEAD == 0, 1, 0),
                                           
